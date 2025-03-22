@@ -10,6 +10,7 @@ import io.netty.handler.logging.LoggingHandler;
 public class ChatServer {
 
     private static final int PORT = 8080;
+    private static final String WEBSOCKET_PATH = "/chat";
 
     public static void main(String[] args) throws InterruptedException {
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
@@ -20,7 +21,7 @@ public class ChatServer {
             bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.INFO))
-                    .childHandler(new WebSocketInit());
+                    .childHandler(new WebSocketServerInitializer(WEBSOCKET_PATH));
 
             Channel channel = bootstrap.bind(PORT).sync().channel();
             System.out.println("Server started. Listening on port 8080...");
