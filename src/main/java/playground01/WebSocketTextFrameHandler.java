@@ -8,7 +8,7 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
+public class WebSocketTextFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
     private static final Set<Channel> channels = new HashSet<>();
 

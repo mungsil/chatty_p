@@ -26,7 +26,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
         pipeline.addLast(new HttpObjectAggregator(65536)); // aggregates multiple HTTP messages into a single FullHttpRequest or FullHttpResponse
         pipeline.addLast(new WebSocketServerCompressionHandler()); // handles WebSocket per-message compression
         pipeline.addLast(new WebSocketServerProtocolHandler(webSocketPath, null, true)); // takes care of websocket handshaking as well as processing of control frames
-        pipeline.addLast(new WebSocketFrameHandler());
+        pipeline.addLast(new WebSocketTextFrameHandler());
     }
 
 }
